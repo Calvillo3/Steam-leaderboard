@@ -1,0 +1,115 @@
+body {
+    margin: 0px;
+    color: #c7d5e0;
+    width: 100%;
+    min-height: 100vh;
+    font-family: "Motiva Sans", Sans-serif;
+    background-color: #1b2838;
+}
+
+.container {
+    /* fr: fractional units*/
+    display: grid;
+    grid-template-columns: 1fr 7fr;
+    grid-template-rows: 1fr 9fr;
+    grid-template-areas:
+       "header header"
+       "aside main";
+    height: 100vh
+ }
+
+ .header {
+    grid-area: header;
+    background-color: #171a21;
+    width: 100%;
+    vertical-align: center;
+ }
+ .header h1 {
+    margin-left: 15px;
+ }
+ .defaultlist {
+    list-style-type: none; /* Remove bullets */
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margins */
+    margin-top: 100px;
+ }
+ .gamelist {
+    list-style-type: none; /* Remove bullets */
+    width: 50%;
+    margin: auto;
+    margin-left: 12.5%;
+    margin-top: 100px;
+ }
+ .gamelist li a {
+     width: 100%;
+     margin-bottom: 10px;
+     border: 1px solid black;
+     text-decoration: none;
+     background: rgba( 0, 0, 0, 0.2 );
+     text-align: left;
+     display: flex;
+     height: 69px;
+ }
+ .gamelist li a:hover {
+     background-color: #66c0f4;
+ }
+ .gamelist li a:hover .gametitle{
+    color: #384959;
+ }
+ .imgdivimg {
+     margin-right: 10px;
+ }
+ .platform-img {
+    background-image: url( 'https://store.akamai.steamstatic.com/public/images/v6/icon_platform_win.png?v=3' );
+    vertical-align: bottom;
+    opacity: 0.3;
+    display: inline-block;
+    height: 25px;
+    width: 25px;
+    background-repeat: no-repeat;
+ }
+.gametitle {
+    color: #c7d5e0;
+    margin-top: 5px;
+}
+.gamedetails {
+    color: #384959;
+}
+
+.playercount{
+    margin: auto;
+    color: #c7d5e0;
+    margin-left: auto;
+}
+.gamelist li a:hover .playercount {
+    color: #384959;
+}
+
+
+ .defaultlist li {
+    padding: 5px;
+ }
+ .defaultlist li a{
+    color: #66c0f4;
+    text-decoration: none;
+ }
+ .defaultlist li a:hover{
+    color: #c7d5e0;
+    text-decoration: none;
+ }
+ 
+ .content {
+    grid-area: main;
+    /* background-color: #c7d5e0; */
+    background: linear-gradient(rgb(42, 71, 94) 5%, rgba(42, 71, 94, 0) 70%);
+    text-align: center;
+ }
+ 
+ .aside {
+    grid-area: aside;
+    /* background: linear-gradient(rgba(62, 103, 150, 0.919) 11.38%, rgba(58, 120, 177, 0.8) 25.23%, rgb(15, 33, 110) 100%); */
+    background: linear-gradient(rgb(42, 71, 94) 5%, rgba(42, 71, 94, 0) 70%);
+    text-align: center;
+ }
+
+ /* #c6e6f8 */
