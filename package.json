@@ -1,0 +1,20 @@
+{
+  "name": "Steam-leaderboard",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Gamebar.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Calvillo3/Steam-leaderboard.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Calvillo3/Steam-leaderboard/issues"
+  },
+  "homepage": "https://github.com/Calvillo3/Steam-leaderboard#readme"
+}
