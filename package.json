@@ -20,6 +20,7 @@
   "homepage": "https://github.com/Calvillo3/Steam-leaderboard#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "steamapi": "^2.1.3",
     "twilio": "^3.63.0"
   }
 }
