@@ -3,6 +3,9 @@ var express = require("express");
  //use the application off of express.
  var app = express();
  app.use(express.static('public'));
+ const cors = require('cors');
+ app.use(cors());
+app.options('*', cors());
  
  //define the route for "/"
  app.get("/", function (request, response){
