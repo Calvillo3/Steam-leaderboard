@@ -31,7 +31,7 @@ eventChanger = (event) => {
     if (event.target.value.length > 2) { //only do if string is longer than 2 characters 
         //fetch here
         //use fetch data to input search results
-        fetch('/doc')
+        fetch('/searchlist/' + event.target.value)
             .then(response => response.json())
             .then(data => {
                 console.log(data);
