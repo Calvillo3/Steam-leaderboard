@@ -10,7 +10,7 @@ var fs = require('fs');
  //define the route for "/"
  app.get("/", function (request, response){
      //show this file when the "/" is requested
-     response.sendFile("index.html");
+     response.sendFile("index.html"); //change this back
      console.log('ran');
  });
 
