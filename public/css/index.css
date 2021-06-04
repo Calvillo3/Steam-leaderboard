@@ -37,7 +37,6 @@ body {
     list-style-type: none; /* Remove bullets */
     width: 50%;
     margin: auto;
-    margin-left: 12.5%;
     margin-top: 100px;
  }
  .gamelist li a {
@@ -48,7 +47,8 @@ body {
      background: rgba( 0, 0, 0, 0.2 );
      text-align: left;
      display: flex;
-     height: 69px;
+     height: 136px;
+     font-size: 30px;
  }
  .gamelist li a:hover {
      background-color: #66c0f4;
@@ -58,16 +58,21 @@ body {
  }
  .imgdivimg {
      margin-right: 10px;
+     background-color:rgb(42, 71, 94);
+     width: 292px;
+     height: 136px;
  }
  .platform-img {
-    background-image: url( 'https://store.akamai.steamstatic.com/public/images/v6/icon_platform_win.png?v=3' );
     vertical-align: bottom;
-    opacity: 0.3;
+    margin-top: 10px;
+    opacity: 1;
     display: inline-block;
-    height: 25px;
-    width: 25px;
-    background-repeat: no-repeat;
+    margin-left: 10px;
  }
+path {
+   fill: #ededed;
+   opacity: 0.5;
+}
 .gametitle {
     color: #c7d5e0;
     margin-top: 5px;
