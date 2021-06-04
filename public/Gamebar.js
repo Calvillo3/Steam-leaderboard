@@ -8,6 +8,7 @@ class App extends React.Component {
         this.eventChanger = this.eventChanger.bind(this);
         this.handleButtonBack = this.handleButtonBack.bind(this);
         this.handleButtonNext = this.handleButtonNext.bind(this);
+        this.gameInformation = this.gameInformation.bind(this);
         this.state = {
             searchValue : "",
             searchResults : [],
@@ -17,9 +18,6 @@ class App extends React.Component {
     }
     
     eventChanger = (event) => {
-        console.log('noop');
-        console.log(event.target.value);
-        console.log(this.state.searchResults);
         if (event.target.value.length > 2) { //only do if string is longer than 2 characters 
             //fetch here
             //use fetch data to input search results
@@ -27,8 +25,6 @@ class App extends React.Component {
                 .then(response => response.json())
                 .then(data => {
                     this.setState({searchResults: data, currSet: 0, currResults: data.slice(0, globalrange)}, () => {});
-                    console.log(data);
-                    console.log(this.state.searchResults);
                 })
                 .catch(err => {
                     console.log(err);
@@ -41,22 +37,27 @@ class App extends React.Component {
         });
     }
     handleButtonBack() {
-        console.log('back pressed');
         if (this.state.currSet >= globalrange) { //checks for overflow
             this.setState({currSet: this.state.currSet - globalrange, currResults: this.state.searchResults.slice(this.state.currSet - 15, this.state.currSet)}, () => {
-                console.log(this.state.currResults);
-                console.log(this.state.currSet);
             });
         }
     }
     handleButtonNext() {
-        console.log('next pressed');
         if (this.state.searchResults.length > this.state.currSet + globalrange) {//checks for overflow
             this.setState({currSet: this.state.currSet + globalrange, currResults: this.state.searchResults.slice(this.state.currSet + 15, this.state.currSet + 30)}, () => {
-                console.log(this.state.currResults);
-                console.log(this.state.currSet);
             });
         }
+    }
+    gameInformation(val)  {
+        console.log(val);
+        fetch('/gamedetails/' + val)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+            })
+            .catch(err => {
+                console.log(err);
+            })
     }
     
     render() {
@@ -66,8 +67,8 @@ class App extends React.Component {
                     <input type="text" name="searchVal" className="searchbar-input" autoComplete="off" placeholder="Find a game" value={this.state.searchValue} onChange={this.eventChanger} />
                 </form>
                 <ul className="gamelist">
-                    {this.state.currResults.map(game => <li key={game.id}><a href="#">
-                        <div className='imgdiv'><img className="imgdivimg" src={"https://cdn.akamai.steamstatic.com/steam/apps/" + game.appid+"/header_292x136.jpg"} onerror='this.src="https://steamdb.info/static/img/applogo.svg"'/></div>
+                    {this.state.currResults.map(game => <li key={game.appid}><a href="#" onClick={() => {this.gameInformation(game.appid)}}>
+                        <div className='imgdiv'><img className="imgdivimg" src={"https://cdn.akamai.steamstatic.com/steam/apps/" + game.appid+"/header_292x136.jpg"} /></div>
                         <div className="gameinfo">
                         <div className="gametitle">{game.name}</div>
                         {/* <span className="platform-img"></span> */}

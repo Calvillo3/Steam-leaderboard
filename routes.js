@@ -10,10 +10,10 @@ const router = express.Router();
 
 
 
-router.route("/doc")
+router.route("/gamedetails/:id")
     .get((_req, res) => {
         // console.log("GET /");
-        steam.getUserSummary('76561198146931523').then(summary => {
+        steam.getGameDetails(_req.params.id).then(summary => {
             res.status(200).send(summary);
         });
     });
