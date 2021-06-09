@@ -18,6 +18,23 @@ router.route("/gamedetails/:id")
         });
     });
 
+router.route("/gameschema/:id")
+    .get((_req, res) => {
+        // console.log("GET /");
+        steam.getGameSchema(_req.params.id).then(summary => {
+            res.status(200).send(summary);
+        });
+    });
+
+router.route("/playercount/:id")
+    .get((_req, res) => {
+        // console.log("GET /");
+        steam.getGamePlayers(_req.params.id).then(summary => {
+            //console.log(summary);
+            res.status(200).send(summary.toString());
+        });
+    });
+
 router.route("/searchlist/:id")
     .get((_req, res) => {
         //console.log("GET /");
