@@ -74,14 +74,9 @@ class App extends React.Component {
         element.style.display = "none";
     }
     gameInformation(val)  {
-        console.log(val);
-        let gamedet;
-        let schema;
-        let count;
         fetch('/gamedetails/' + val)
             .then(response => response.json())
             .then(data => {
-                console.log(data);
                 this.setState({selectedInfo: data.short_description, selecteddev : data.developers[0], selectedpub: data.publishers[0],
                     selectedID: val, selectedtype: data.type, selectedcontroller: data.controller_support, selectedrelease : data.release_date.date,
                     selectedgenres: data.genres, selectedname: data.name, selectedwebsite: data.website}
