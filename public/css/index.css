@@ -29,6 +29,52 @@ body {
  .header h1 {
     margin-left: 15px;
  }
+ table, td {
+    border: 1px solid rgba(102, 192, 244, 0.75);
+    border-width: thin;
+ }
+ table {
+    border-radius: 10px;
+ }
+ td {
+    padding: 10px;
+    line-height: 15px;
+    text-align: left;
+    font-size: 20px;
+    padding-right: 20px;
+ }
+ .flexparent {
+    display: flex;
+    justify-content: center;
+    column-gap: 5em;
+    color: #b4b4b4;
+    position: fixed;
+    width: 75%;
+ }
+ .players {
+   background-color: rgb(255, 80, 100);
+   color: #384959;
+   border-radius: 5px;
+   padding-left: 10px;
+   padding-right: 10px;
+   margin-left: 10px;
+ }
+ .playerheader {
+    display: inline-flex;
+ }
+ .imginfo {
+    display: flex;
+    flex-direction: column;
+    max-width: 616px;
+    row-gap: 2em;
+    justify-content: space-between;
+    margin: 20px
+ }
+ .tableinfo {
+    display: flex;
+    margin: 20px;
+    flex-direction: column;
+ }
 
  .popupwindow {
    display: none;

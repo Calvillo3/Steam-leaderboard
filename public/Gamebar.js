@@ -26,7 +26,9 @@ class App extends React.Component {
             selectedgenres : [],
             selecteddev : "",
             selectedpub : "",
-            selectedrelease : ""
+            selectedrelease : "",
+            selectedprice : "free",
+            selectedwebsite: ""
         }
     }
     
@@ -80,10 +82,16 @@ class App extends React.Component {
             .then(response => response.json())
             .then(data => {
                 console.log(data);
-                this.setState({selectedInfo: data.detailed_description, selecteddev : data.developers[0], selectedpub: data.publishers[0],
+                this.setState({selectedInfo: data.short_description, selecteddev : data.developers[0], selectedpub: data.publishers[0],
                     selectedID: val, selectedtype: data.type, selectedcontroller: data.controller_support, selectedrelease : data.release_date.date,
-                    selectedgenres: data.genres, selectedname: data.name}
+                    selectedgenres: data.genres, selectedname: data.name, selectedwebsite: data.website}
                     , () => {});
+                if (data.price_overview) {
+                    this.setState({selectedprice: data.price_overview.final_formatted}, () => {});
+                }
+                else {
+                    this.setState({selectedprice : "free"}, () => {});
+                }
                 const element = document.querySelector(".popupwindow");
                 element.style.display = "block";
             })
@@ -134,11 +142,13 @@ class App extends React.Component {
             </main>
             <div className="popupwindow">
                 <input type="button" value="Back" className="backbutton" onClick={this.handleMenuExit}/>
+                <div className="flexparent">
                 <div className="imginfo">
                 <img className="herocapsule" src={"https://cdn.akamai.steamstatic.com/steam/apps/" + this.state.selectedID + "/capsule_616x353.jpg"}/>
-                <p>{HTMLReactParser(this.state.selectedInfo)}</p></div>
+                <div>{HTMLReactParser(this.state.selectedInfo)}</div></div>
+                <div className="tableinfo">
                 <h2>{this.state.selectedname}</h2>
-                <table>
+                <table cellSpacing="0">
                     <tbody>
                     <tr><td>App ID</td><td>{this.state.selectedID}</td></tr>
                     <tr><td>App Type</td><td>{this.state.selectedtype}</td></tr>
@@ -146,9 +156,11 @@ class App extends React.Component {
                     <tr><td>Publisher</td><td>{this.state.selectedpub}</td></tr>
                     <tr><td>Release Date</td><td>{this.state.selectedrelease}</td></tr>
                     <tr><td>Controller Support</td><td>{this.state.selectedcontroller}</td></tr>
+                    <tr><td>Price</td><td>{this.state.selectedprice}</td></tr>
                     </tbody>
                 </table>
-                <h3>Current Players: {this.state.playerCount}</h3>
+                <h2 className="playerheader">Current Players: <div className="players">{this.state.playerCount}</div></h2>
+                <a href={this.state.selectedwebsite} target="_blank"><h3>Visit Game Website</h3></a></div></div>
             </div>
             </div>
            );
