@@ -31,6 +31,7 @@ class App extends React.Component {
     }
     
     eventChanger = (event) => {
+        const element = document.querySelector(".buttoncontainer");
         if (event.target.value.length > 2) { //only do if string is longer than 2 characters 
             //fetch here
             //use fetch data to input search results
@@ -44,6 +45,11 @@ class App extends React.Component {
                 })
     
             //update state using setState
+            element.style.display = "block";
+        }
+        else {
+            this.setState({currResults: []}, () => {});
+            element.style.display = "none";
         }
         this.setState({
             searchValue: event.target.value
@@ -107,7 +113,7 @@ class App extends React.Component {
     render() {
             //should ideally create a new class called gameList that lists all games that were fetched
            return( <div className="container1"><main className="content">
-               <h1>Steam Numbers</h1>
+               <h1><span style={{color: "#66c0f4"}}>S</span>team <span style={{color: "rgb(255, 80, 100)"}}>N</span>umbers</h1>
                 <form>
                     <input type="text" name="searchVal" className="searchbar-input" autoComplete="off" placeholder="Find a game" value={this.state.searchValue} onChange={this.eventChanger} />
                 </form>

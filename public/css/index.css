@@ -64,9 +64,12 @@ body {
     margin-bottom: 30px;
  }
 
-
+.buttoncontainer {
+   display: none;
+}
  .backbutton:hover, .nextbutton:hover {
    background-color: rgb(255, 80, 100);
+   color: #384959;
  }
 
  .defaultlist {
